@@ -84,7 +84,6 @@ python summarization_hf.py -t "Inserire testo da riassumere." -o summary.txt
 4. Sintesi di un File di Testo e Salvataggio del Risultato:
 
 python summarization_hf.py -f report.txt -o summarized_report.txt
-<<<<<<< HEAD
 
 # OVERVIEW
 ### Named Entity Recognition (NER) with FastAPI
@@ -118,5 +117,3 @@ uvicorn main:app --reload
 
 - Apri il browser e vai su http://127.0.0.1:8000/docs per accedere all'interfaccia utente di Swagger, dove puoi testare gli endpoint API.
 
-=======
->>>>>>> bb2ce15760d03c5439fbfd157458e47bf3359d95

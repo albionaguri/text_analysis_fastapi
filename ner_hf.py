@@ -6,29 +6,106 @@ from utils import load_text
  # Load the model and tokenizer for NER task
 tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
 model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+
+# NER pipeline
+nlp = pipeline('ner', tokenizer=tokenizer, model=model)
+
+
+from transformers import AutoTokenizer, AutoModelForTokenClassification
+from fastapi import HTTPException
+from transformers import pipeline
+from utils import load_text
+
+# Load the model and tokenizer for NER task
+tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+
 # NER pipeline
 nlp = pipeline("ner", tokenizer=tokenizer, model=model)
 
+
+from transformers import AutoTokenizer, AutoModelForTokenClassification
+from fastapi import HTTPException
+from transformers import pipeline
+from utils import load_text
+import numpy as np
+
+# Load the model and tokenizer for NER task
+tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+
+# NER pipeline
+nlp = pipeline("ner", tokenizer=tokenizer, model=model)
+
+def convert_numpy_types(data):
+    """Convert numpy types to native Python types."""
+    if isinstance(data, dict):
+        return {key: convert_numpy_types(value) for key, value in data.items()}
+    elif isinstance(data, list):
+        return [convert_numpy_types(item) for item in data]
+    elif isinstance(data, np.float32):
+        return float(data)
+    return data
+
 def perform_ner(request, threshold=None):
-
     try:
-
         if not request.text and not request.file:
             raise HTTPException(status_code=400, detail="You must provide either text or a file path")
         
         text = request.text if request.text else load_text(request.file)
         results = nlp(text)
-
+        
+        # Convert threshold to a float if it is not None
         if threshold is not None:
-            results = [r for r in results if r.get("score", 0) >= threshold]
+            try:
+                threshold = float(threshold)  # Ensure threshold is a Python float
+                results = [r for r in results if r["score"] >= threshold]
+            except ValueError:
+                raise HTTPException(status_code=400, detail="Invalid threshold value")
+        
+        # Convert any numpy types to native Python types
+        results = convert_numpy_types(results)
 
         if request.print_result:
             return results
-
+        
         return {"output": results}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 
