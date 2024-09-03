@@ -1,0 +1,9 @@
+{'entity': 'B-ORG', 'score': 0.9994697, 'index': 1, 'word': 'Te', 'start': 0, 'end': 2}
+{'entity': 'I-ORG', 'score': 0.99644864, 'index': 2, 'word': '##sla', 'start': 2, 'end': 5}
+{'entity': 'I-ORG', 'score': 0.9993864, 'index': 3, 'word': 'Inc', 'start': 6, 'end': 9}
+{'entity': 'B-ORG', 'score': 0.99522865, 'index': 8, 'word': 'Twitter', 'start': 30, 'end': 37}
+{'entity': 'B-PER', 'score': 0.9995876, 'index': 14, 'word': 'Barack', 'start': 55, 'end': 61}
+{'entity': 'I-PER', 'score': 0.9995766, 'index': 15, 'word': 'Obama', 'start': 62, 'end': 67}
+{'entity': 'B-LOC', 'score': 0.9997147, 'index': 23, 'word': 'United', 'start': 98, 'end': 104}
+{'entity': 'I-LOC', 'score': 0.9992092, 'index': 24, 'word': 'States', 'start': 105, 'end': 111}
+{'entity': 'B-LOC', 'score': 0.99971694, 'index': 29, 'word': 'Hawaii', 'start': 128, 'end': 134}
