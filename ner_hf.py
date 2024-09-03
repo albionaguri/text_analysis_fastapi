@@ -2,6 +2,7 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification
 from fastapi import HTTPException
 from transformers import pipeline
 from utils import load_text
+import numpy as np
 
 
 # Load the model and tokenizer for NER task
