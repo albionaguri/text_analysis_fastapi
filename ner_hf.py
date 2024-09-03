@@ -3,32 +3,6 @@ from fastapi import HTTPException
 from transformers import pipeline
 from utils import load_text
 
- # Load the model and tokenizer for NER task
-tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
-
-# NER pipeline
-nlp = pipeline('ner', tokenizer=tokenizer, model=model)
-
-
-from transformers import AutoTokenizer, AutoModelForTokenClassification
-from fastapi import HTTPException
-from transformers import pipeline
-from utils import load_text
-
-# Load the model and tokenizer for NER task
-tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
-
-# NER pipeline
-nlp = pipeline("ner", tokenizer=tokenizer, model=model)
-
-
-from transformers import AutoTokenizer, AutoModelForTokenClassification
-from fastapi import HTTPException
-from transformers import pipeline
-from utils import load_text
-import numpy as np
 
 # Load the model and tokenizer for NER task
 tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
